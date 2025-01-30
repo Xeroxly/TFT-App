@@ -70,8 +70,6 @@ function APITest() {
       }
     }
 
-    console.log(gameDataJSON);
-
     if (displayData) {
       let orderedParticipants = gameDataJSON.participants.toSorted(sortingFunc);
 
