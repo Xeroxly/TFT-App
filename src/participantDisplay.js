@@ -167,8 +167,14 @@ function DisplayTest(props) {
 
     if (itemString.includes("Emblem")) {
       imagePath = itemsJSON.data["TFT13_EmblemItems/" + itemString].image.full;
-    } else if (itemString.includes("Radiant")) {
+    } else if (itemString.endsWith("Radiant")) {
       imagePath = itemsJSON.data["Set5_RadiantItems/" + itemString].image.full;
+    } else if (itemString.includes("TFT7")) {
+      imagePath =
+        itemsJSON.data["TFT7_ShimmerscaleItems/" + itemString].image.full;
+    } else if (itemString.includes("Crime")) {
+      imagePath =
+        itemsJSON.data["TFT13_Crime_Illegal_Items/" + itemString].image.full;
     } else {
       imagePath = itemsJSON.data[itemString].image.full;
     }
