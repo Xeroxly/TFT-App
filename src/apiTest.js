@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ParticiapantDisplay from "./participantDisplay.js";
 
-let apiKey = "RGAPI-375afa2c-457e-47c6-b381-e0cfcfc85e40"; // Changes daily, get new from https://developer.riotgames.com/
+let apiKey = "RGAPI-90183c2a-a2d2-4323-a076-e017c3e9a823"; // Changes daily, get new from https://developer.riotgames.com/
 
 // STEPS TO GET SINGLE GAME DATA
 // 1. Look up player by gameName (Xeroxly) and tagLine (6317) with /riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine} to get PUUID
