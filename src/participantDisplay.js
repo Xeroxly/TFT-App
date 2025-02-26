@@ -1,7 +1,7 @@
-import tacticiansJSON from "./15.2.1/data/en_US/tft-tactician.json";
-import traitsJSON from "./15.2.1/data/en_US/tft-trait.json";
-import championsJSON from "./15.2.1/data/en_US/tft-champion.json";
-import itemsJSON from "./15.2.1/data/en_US/tft-item.json";
+import tacticiansJSON from "./15.4.1/data/en_US/tft-tactician.json";
+import traitsJSON from "./15.4.1/data/en_US/tft-trait.json";
+import championsJSON from "./15.4.1/data/en_US/tft-champion.json";
+import itemsJSON from "./15.4.1/data/en_US/tft-item.json";
 
 function DisplayTest(props) {
   function getTacticianImage(id) {
@@ -9,7 +9,7 @@ function DisplayTest(props) {
     let altString = tacticiansJSON.data[id].name;
     return (
       <img
-        src={require(`./15.2.1/img/tft-tactician/${imagePath}`)}
+        src={require(`./15.4.1/img/tft-tactician/${imagePath}`)}
         alt={altString}
         height={"150px"}
       />
@@ -120,7 +120,7 @@ function DisplayTest(props) {
       <>
         <h2 style={{ display: "inline" }}>{traitObject.num_units}</h2>
         <img
-          src={require(`./15.2.1/img/tft-trait/${imagePath}`)}
+          src={require(`./15.4.1/img/tft-trait/${imagePath}`)}
           alt={altString}
           style={{ backgroundColor: traitColor }}
         />
@@ -182,7 +182,7 @@ function DisplayTest(props) {
     let altString = itemString;
     return (
       <img
-        src={require(`./15.2.1/img/tft-item/${imagePath}`)}
+        src={require(`./15.4.1/img/tft-item/${imagePath}`)}
         alt={altString}
         height={"75px"}
       />
@@ -212,9 +212,24 @@ function DisplayTest(props) {
   function getChampionImage(championObject) {
     // Special case to handle Sion summon
     if (championObject.character_id === "TFT13_Sion") {
-      return (
+      let starsImage = null;
+      if (championObject.tier === 2) {
+        starsImage = (
+          <img src={require("./manualAssets/2stars.png")} alt={"2 stars"} />
+        );
+      } else if (championObject.tier === 3) {
+        starsImage = (
+          <img src={require("./manualAssets/3stars.png")} alt={"3 stars"} />
+        );
+      } else if (championObject.tier === 4) {
+        starsImage = (
+          <img src={require("./manualAssets/4stars.png")} alt={"4 stars"} />
+        );
+      }
+
+      return [
         <img
-          src={require("./15.2.1/img/champion/Sion.png")}
+          src={require("./15.4.1/img/champion/Sion.png")}
           alt={"Sion"}
           style={{
             border: "solid",
@@ -222,8 +237,8 @@ function DisplayTest(props) {
             height: "70px",
             width: "70px",
           }}
-        />
-      );
+        />,
+      ].concat(starsImage);
     }
 
     // Special case to handle Jayce's forges
@@ -294,11 +309,15 @@ function DisplayTest(props) {
       starsImage = (
         <img src={require("./manualAssets/3stars.png")} alt={"3 stars"} />
       );
+    } else if (championObject.tier === 4) {
+      starsImage = (
+        <img src={require("./manualAssets/4stars.png")} alt={"4 stars"} />
+      );
     }
 
     return [
       <img
-        src={require(`./15.2.1/img/tft-champion/${imagePath}`)}
+        src={require(`./15.4.1/img/tft-champion/${imagePath}`)}
         alt={altString}
         style={{
           border: "solid",
